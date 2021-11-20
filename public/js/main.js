@@ -80,7 +80,7 @@ Author: GrayGrids
     const minutes = document.getElementById("minutes");
     const seconds = document.getElementById("seconds");
     
-    const eventDate = new Date('November 15 2021 10:30:00')
+    const eventDate = new Date('November 23 2021 10:30:00')
 
     const dateUpdate = setInterval(function() {
         const currentDate = new Date();

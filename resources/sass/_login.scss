@@ -1,10 +1,10 @@
 .bg-login {
-    bottom: 0;
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    z-index: -1;
-    // width: 100vw;
+    background-image: url('../../public/assets/images/bg-login.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 .card-login {

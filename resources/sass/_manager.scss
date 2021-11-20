@@ -1,0 +1,22 @@
+.row-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-doc {
+    padding: 10px 5px;
+    max-width: 225px;
+    max-height: 270px;
+    border-radius: 35px;
+
+    img {
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+    }
+
+}
+
+.hidden {
+    display: none;
+}

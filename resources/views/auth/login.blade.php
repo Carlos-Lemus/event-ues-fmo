@@ -12,8 +12,7 @@
     </div>
 </div>
 
-<div class="container-wrap">
-    <img class="bg-login" src="{{ asset('assets/images/login.png') }}" alt="background" />
+<div class="container-wrap bg-login">
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-md-11">
             <div class="card card-login">

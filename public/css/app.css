@@ -15690,15 +15690,34 @@ ol {
   }
 }
 .bg-login {
-  bottom: 0;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  z-index: -1;
+  background-image: url(/images/bg-login.png?e03fc1d675d8a06a729340faeeccb066);
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .card-login {
   max-width: 380px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.row-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-doc {
+  padding: 10px 5px;
+  max-width: 225px;
+  max-height: 270px;
+  border-radius: 35px;
+}
+.card-doc img {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }
