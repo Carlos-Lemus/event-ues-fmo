@@ -1,0 +1,22 @@
+.header-doc {
+    min-width: 100%;
+    min-height: 50px;
+}
+
+.navbar-doc {
+    background-color: $primary;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    justify-content: space-between;
+}
+
+.iframe-doc {
+    height: 1000px;
+}
+
+.img-view-doc {
+    height: auto;
+    width: 100%;
+}

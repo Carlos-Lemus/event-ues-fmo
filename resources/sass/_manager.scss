@@ -4,6 +4,8 @@
 }
 
 .card-doc {
+    position: relative;
+    cursor: pointer;
     padding: 10px 5px;
     max-width: 225px;
     max-height: 270px;
@@ -15,6 +17,21 @@
         margin: 0 auto;
     }
 
+}
+
+.toast {
+    position: absolute;
+    top: 125px;
+    left: 100px;
+    z-index: 1000;
+}
+
+.toast a {
+    display: inline-block;
+}
+
+.toast-body {
+    background-color: white;;
 }
 
 .hidden {

@@ -5,6 +5,7 @@
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script src="{{ asset('js/tiny-slider.js') }}"></script>
 <script src="{{ asset('js/glightbox.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 
 <script type="text/javascript">

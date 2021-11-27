@@ -28,7 +28,7 @@ Author: GrayGrids
         }
 
 
-    
+
 
         // show or hide the back-top-top button
         var backToTo = document.querySelector(".scroll-top");
@@ -39,11 +39,11 @@ Author: GrayGrids
         }
     };
 
-    
+
     // WOW active
     new WOW().init();
 
-    
+
 
     // for menu scroll 
     var pageLink = document.querySelectorAll('.page-scroll');
@@ -58,12 +58,12 @@ Author: GrayGrids
         });
     });
 
-    
-      //===== mobile-menu-btn
-	let navbarToggler = document.querySelector(".mobile-menu-btn");
-	navbarToggler.addEventListener('click', function () {
-		navbarToggler.classList.toggle("active");
-	});
+
+    //===== mobile-menu-btn
+    let navbarToggler = document.querySelector(".mobile-menu-btn");
+    navbarToggler.addEventListener('click', function () {
+        navbarToggler.classList.toggle("active");
+    });
 
     //====== counter up 
     var cu = new counterUp({
@@ -75,30 +75,75 @@ Author: GrayGrids
     });
     cu.start();
 
-    const days = document.getElementById("days");
-    const hours = document.getElementById("hours");
-    const minutes = document.getElementById("minutes");
-    const seconds = document.getElementById("seconds");
+    // const days = document.getElementById("days");
+    // const hours = document.getElementById("hours");
+    // const minutes = document.getElementById("minutes");
+    // const seconds = document.getElementById("seconds");
+
+    // const eventDate = new Date('November 23 2021 10:30:00')
+
+    // const dateUpdate = setInterval(function () {
+    //     const currentDate = new Date();
+    //     const diff = eventDate - currentDate;
+
+    //     if (diff < 0) {
+    //         clearInterval(dateUpdate);
+
+    //         return;
+    //     }
+    //     const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+    //     const h = Math.floor(diff / 1000 / 60 / 60) % 24;
+    //     const m = Math.floor(diff / 1000 / 60) % 60;
+    //     const s = Math.floor(diff / 1000) % 60;
+
+    //     days.innerHTML = d < 10 ? '0' + d : d;
+    //     hours.innerHTML = h < 10 ? '0' + h : h;
+    //     minutes.innerHTML = m < 10 ? '0' + m : m;
+    //     seconds.innerHTML = s < 10 ? '0' + s : s;
+    // }, 1000);
+
+    const martes = document.querySelector('#day-martes');
+    const miercoles = document.querySelector('#day-miercoles');
+    const jueves = document.querySelector('#day-jueves');
+    const viernes = document.querySelector('#day-viernes');
+
+    const divMartes = $('#martes');
+    const divMiercoles = $('#miercoles');
+    const divJueves = $('#jueves');
+    const divViernes = $('#viernes');
     
-    const eventDate = new Date('November 23 2021 10:30:00')
+    changeDay(divMartes);
 
-    const dateUpdate = setInterval(function() {
-        const currentDate = new Date();
-        const diff = eventDate - currentDate;
+    martes.addEventListener('click', (event) => {
+        event.preventDefault();
 
-        if(diff < 0) {
-            clearInterval(dateUpdate);
-            
-            return;
-        }
-        const d = Math.floor(diff / 1000/ 60 / 60 /24);
-        const h = Math.floor(diff / 1000/ 60 / 60) % 24;
-        const m = Math.floor(diff / 1000 / 60) % 60;
-        const s = Math.floor(diff / 1000) % 60;
+        changeDay(divMartes);
+    })
+    miercoles.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        changeDay(divMiercoles);
+    })
+    jueves.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        changeDay(divJueves);
+    })
+    viernes.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        changeDay(divViernes);
+    })
+
+    function changeDay(divCurrent) {
+
+        divMartes.css("display", "none");
+        divMiercoles.css("display", "none");
+        divJueves.css("display", "none");
+        divViernes.css("display", "none");
         
-        days.innerHTML = d < 10? '0' + d: d;
-        hours.innerHTML = h < 10? '0' + h: h;
-        minutes.innerHTML = m < 10? '0' + m: m;
-        seconds.innerHTML = s < 10? '0' + s: s; 
-    }, 1000);
+        divCurrent.fadeIn();
+        divCurrent.css("display", "block");
+    }
+
 })();
