@@ -3,7 +3,7 @@
 
     <div class="form-group">
         <label for="recipient-name" class="col-form-label" >Titulo:</label>
-        <input required id="edit-title" name="title" id="title" type="text" class="form-control" id="txt-title">
+        <input  id="edit-title" name="title" id="title" type="text" class="form-control" id="txt-title">
     </div>
     <div class="form-group">
         <label for="message-text" class="col-form-label">Descripcion:</label>
@@ -29,8 +29,12 @@
         </div>
     </div>
 
+    <div class="alert alert-danger mt-3 hidden" role="alert">
+        Debes llenar los campos obligatorios
+    </div>
+
     <div class="modal-footer mt-3">
         <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Close</button>
-        <button type="submit" id="btn-upload" class="btn btn-primary">Actualizar</button>
+        <button type="button" id="btn-modal" class="btn btn-primary btn-submit">Actualizar</button>
     </div>
 </form>

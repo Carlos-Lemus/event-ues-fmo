@@ -95,11 +95,58 @@ $(document).ready(function () {
     const btnEditDocument = document.querySelector('.btn-edit-document');
     const formEditDocument = document.querySelector('.form-edit-document');
 
-    if(btnEditDocument) {
+    if (btnEditDocument) {
         btnEditDocument.addEventListener('click', () => {
-            formEditDocument.submit();
+            
+            if (isValidFormData(formEditDocument)) {
+                formEditDocument.submit();
+            }
+
         });
     }
 
+    const btnsSubmitModal = document.querySelectorAll('.form-modal .btn-submit');
+
+    if (btnsSubmitModal) {
+        btnsSubmitModal.forEach(btn => {
+
+
+            btn.addEventListener('click', (event) => {
+
+                const form = btn.parentElement.parentElement;
+                
+                if (isValidFormData(form)) {
+                    form.submit();
+                }
+                
+            });
+        });
+    }
+    
+    function isValidFormData(form) {
+        let isValidForm = true;
+        const inputs = form.elements;
+
+        for (let i = 0; i < inputs.length; i++) {
+
+            if ((inputs[i].nodeName === "INPUT" || inputs[i].nodeName === "TEXTAREA") && inputs[i].name != '_token' && inputs[i].name != 'image') {
+
+                inputs[i].classList.remove('is-invalid');
+
+                if (inputs[i].value === '') {
+                    const alert = form.querySelector('.alert');
+
+                    alert.classList.remove('hidden');
+
+                    isValidForm = false;
+
+                    inputs[i].classList.add('is-invalid');
+                }
+
+            }
+        }
+
+        return isValidForm;
+    }
 
 });

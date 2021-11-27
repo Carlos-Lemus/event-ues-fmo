@@ -32,6 +32,11 @@
         <form class="col-md-7 col-xs-11 p-3 mx-auto form-edit-document" action="{{ url('/documents/'.$doc->id).'/update' }}" method="POST" enctype="multipart/form-data">
             @csrf
             <h3 class="text-muted text-center">Editar Documento</h3>
+
+            <div class="alert alert-danger mt-3 hidden" role="alert">
+                Debes llenar los campos obligatorios
+            </div>
+
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Titulo:</label>
                 <input name="title" value="{{$doc->title}}" id="title" type="text" class="form-control" id="txt-title">
@@ -46,15 +51,6 @@
             </div>
             <img class="img-view-doc" src="{{$doc->image}}" alt="">
         </form>
-
-        <!-- <form class="col-8 p-3" action="{{url('upload')}}" method="POST" enctype="multipart/form-data">
-            <h5 class="h-3 text-muted mb-2">Imagen del documento</h5>
-            <div class="form-group custom-file mb-2">
-                <input type="file" name="image" id="image" required>
-                <label class="custom-file-label" for="image">Elejir imagen...</label>
-            </div>
-            <img class="img-view-doc" src="/assets/images_documents/{{$doc->image}}" alt="">
-        </form> -->
 
         <!-- <div class="col-12 p-5">
             <iframe class="iframe-doc col-12" src="/assets/documents/{{$doc->file}}" frameborder="0"></iframe>

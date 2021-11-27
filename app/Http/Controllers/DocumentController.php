@@ -85,7 +85,11 @@ class DocumentController extends Controller
             $data->description = $request->description;
             
             if($request->file('image') != null) {
-                File::delete(public_path($data->image));
+                
+                if($data->image != "/assets/images_documents/default.jpg") {
+                    File::delete(public_path($data->image));
+                }
+
                 $image = $request->image;
                 $imageName = $data->title.'.'.$image->getClientOriginalExtension();
                 $request->image->move('assets/images_documents', $imageName);

@@ -28,8 +28,12 @@
         </div>
     </div>
 
+    <div class="alert alert-danger mt-3 hidden" role="alert">
+        Debes llenar los campos obligatorios
+    </div>
+
     <div class="modal-footer mt-3">
         <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Close</button>
-        <button type="submit" id="btn-upload" class="btn btn-primary">Guardar</button>
+        <button type="button" id="btn-modal" class="btn btn-primary btn-submit">Guardar</button>
     </div>
 </form>
