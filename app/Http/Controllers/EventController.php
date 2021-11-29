@@ -12,9 +12,15 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::all()->sortBy('date');
+        try {
 
-        return view('events', compact('events'));
+            $events = Event::all()->sortBy('date');
+    
+            return view('events', compact('events'));
+
+        } catch (Exception $ex) {
+            return redirect('/')->back();
+        }
     }
 
     public function insert(Request $request)

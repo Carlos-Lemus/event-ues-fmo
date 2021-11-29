@@ -3,7 +3,7 @@
 <div id="body">
     @include('include.manager.menu')
 
-    <div class="container-fluid container-manager p-5 mb-5">
+    <div class="container-fluid container-main p-5 mb-5 max-width-lg">
 
         @if (session('msgSuccess'))
         <div class="row alert alert-success">
@@ -35,16 +35,11 @@
         </div>
 
         <form class="row row-form" enctype="multipart/form-data">
-            <div class="col-4">
-                <button id="btn-upload" type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#staticBackdrop">Agregar Documento</button>
+            <div class="col-md-4 col-sm-12 mb-3">
+                <button id="btn-upload" type="button" class="btn btn-danger text-white d-block" data-toggle="modal" data-target="#staticBackdrop">Agregar Documento</button>
             </div>
 
-            <div class="custom-file mb-3 hidden">
-                <input type="file" class="upload-file" id="upload-file" required>
-                <label class="custom-file-label" for="upload-file">Elijir archivo...</label>
-            </div>
-
-            <div class="col-4">
+            <div class="col-md-4 col-sm-12 mb-3">
                 <select class="form-control" aria-label="Default select example">
                     <option selected>Ordenar por</option>
                     <option value="1">Fecha</option>
@@ -55,22 +50,21 @@
 
         </form>
 
-        <div class="row row-cols-1 row-cols-md-4 mt-4">
+        <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 mt-4">
             @foreach($docs as $doc)
             <div class="col mb-4">
                 <div data-id="{{$doc->id}}" class="card card-doc h-100 mx-auto">
 
                     <!-- Start Toast -->
-                    <div id="toast-{{$doc->id}}" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+                    <div id="toast-{{$doc->id}}" class="toast toast-doc hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
                         <div class="toast-header">
-                            <!-- <img src="..." class="rounded mr-2" alt="..."> -->
                             <strong class="mr-auto">Opciones</strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="toast-body">
-                            <a href="#">Ver detalles</a>
+                            <a href="#" class="mb-2">Ver detalles</a>
                             <a href="{{ url('/showDocument/'.$doc->id) }}" class="btn btn-warning rounded"><i class="fas fa-edit text-white"></i></a>
                             <a href="{{ url('/documents/'.$doc->id.'/delete') }}" class="btn btn-danger rounded"><i class="fas fa-trash text-white"></i></a>
                         </div>

@@ -2,7 +2,7 @@
 Template Name: EduGrids - Education & Online Course HTML Template.
 Author: GrayGrids
 */
-(function () {
+$(document).ready(function () {
     //===== Prealoder
 
     window.onload = function () {
@@ -146,4 +146,10 @@ Author: GrayGrids
         divCurrent.css("display", "block");
     }
 
-})();
+    const toastError =  $('.toast-error');
+
+    if(toastError) {
+        toastError.toast('show');
+    }
+    
+});

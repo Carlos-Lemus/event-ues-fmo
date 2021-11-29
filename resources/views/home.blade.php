@@ -1,36 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    
-                    <button class="btn btn-primary text-white">Click</button>
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
-<!--[if lte IE 9]>
-<p class="browserupgrade">
-    You are using an <strong>outdated</strong> browser. Please
-    <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-    your experience and security.
-</p>
-<![endif]-->
+
+<!-- <div class="container-toast-error p-3"> -->
+
+<!-- </div> -->
+
 
 @include("include.header")
+
+@if (isset($msgConnection))
+<div id="liveToast" class="toast hide toast-error shadow" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+    <div class="toast-header">
+        <strong class="mr-auto text-danger"><i class="fas fa-exclamation-triangle mr-1"></i>Error</strong>
+    </div>
+    <div class="toast-body">
+        {{$msgConnection}}
+    </div>
+</div>
+@endif
 
 <!-- Start Hero Area -->
 <section class="hero-area">
@@ -124,8 +113,7 @@
                             adipisicing elit, do eius mod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <div class="button wow fadeInUp" data-wow-delay="1s">
                             <a href="javascript:void(0)" class="btn">Leer mas</a>
-                            <a href="https://www.youtube.com/watch?v=8qjSpwBrmto"
-                                class="glightbox video btn"> Ver video<i class="lni lni-play"></i></a>
+                            <a href="https://www.youtube.com/watch?v=8qjSpwBrmto" class="glightbox video btn"> Ver video<i class="lni lni-play"></i></a>
                         </div>
                     </div>
                 </div>

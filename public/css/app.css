@@ -12645,6 +12645,14 @@ ol {
   margin-bottom: 225px;
 }
 
+.pl-0 {
+  margin-left: 0px;
+}
+
+.pr-0 {
+  margin-left: 0px;
+}
+
 .pt-5 {
   padding-top: 5px;
 }
@@ -15862,7 +15870,7 @@ div.detalle-evento p {
 .menu-header {
   width: calc(100% - 80px);
   height: 60px;
-  background: #343a40;
+  background: #f1f1f1;
   display: flex;
   align-items: center;
   position: fixed;
@@ -15889,7 +15897,7 @@ div.detalle-evento p {
 .menu__side {
   width: 80px;
   height: 100%;
-  background: #2BC790;
+  background: #343a40;
   position: fixed;
   top: 0;
   left: 0;
@@ -15898,7 +15906,7 @@ div.detalle-evento p {
   z-index: 300;
   overflow: hidden;
   overflow-y: scroll;
-  border-right: 20px solid #2BC790;
+  border-right: 20px solid #343a40;
   transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -15929,7 +15937,7 @@ div.detalle-evento p {
 }
 
 .name__page h4 span {
-  color: #212529;
+  color: #2BC790;
 }
 
 .name__page img {
@@ -15961,10 +15969,15 @@ div.detalle-evento p {
   display: block;
   position: relative;
   transition: color 300ms;
+  text-decoration: none;
 }
 
 .options__menu a:hover {
-  color: white;
+  color: #2BC790;
+}
+
+.options__menu a:hover h4 {
+  color: #2BC790;
 }
 
 .options__menu .option {
@@ -16027,6 +16040,10 @@ a.selected {
     left: -80px;
   }
 }
+.btn-outline-danger:hover {
+  color: white;
+}
+
 .header-doc {
   min-width: 100%;
   min-height: 50px;
@@ -16053,6 +16070,7 @@ a.selected {
 .row-form {
   display: flex;
   justify-content: space-between;
+  flex-flow: row wrap;
 }
 
 .card-doc {
@@ -16069,11 +16087,13 @@ a.selected {
   margin: 0 auto;
 }
 
-.toast {
+.toast-doc {
   position: absolute;
   top: 125px;
   left: 100px;
   z-index: 1000;
+  min-width: 125px;
+  max-width: 125px;
 }
 
 .toast a {
@@ -16086,4 +16106,42 @@ a.selected {
 
 .hidden {
   display: none;
+}
+
+.toast-error {
+  position: fixed !important;
+  left: calc(100% - 180px) !important;
+  top: calc(100% - 180px) !important;
+  z-index: 5;
+  margin-right: 7px;
+  max-height: 180px;
+  max-width: 180px;
+}
+
+.max-width-lg {
+  max-width: 1100px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .row-form {
+    flex-direction: column;
+  }
+
+  .row-form .btn {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .row-form .form-control {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 250px;
+  }
+
+  .col-table {
+    overflow-x: scroll !important;
+    padding: 0;
+  }
 }

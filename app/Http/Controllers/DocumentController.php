@@ -11,9 +11,16 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $docs = Document::all();
+        
+        try {
 
-        return view('documents', compact('docs'));
+            $docs = Document::all();
+    
+            return view('documents', compact('docs'));
+
+        } catch (Exception $ex) {
+            return redirect('/')->back();
+        }
     }
 
     public function showDocument($id)
@@ -22,10 +29,10 @@ class DocumentController extends Controller
 
             $doc = Document::find($id);
     
-            return view('view-document', compact('doc'));
+            return view('edit-document', compact('doc'));
 
         } catch (Exception $ex) {
-            return redirect()->back()->with('msgError', 'Error: No se pudo obtener el documento');
+            return redirect('/')->back();
         }
 
     }

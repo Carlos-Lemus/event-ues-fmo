@@ -4,6 +4,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventController;
 use App\Models\Document;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +29,14 @@ Route::get('/', function () {
 
         return view('home', compact(['docs', 'events']));
     } catch (Exception $ex) {
-        
-        $events = Array();
 
-        $docs = Array();
+        $events = array();
 
-        return view('home', compact(['docs', 'events']));
+        $docs = array();
+
+        $msgConnection = 'Ha habido un problema en la base de datos';
+
+        return view('home', compact(['docs', 'events', 'msgConnection']));
     }
 });
 

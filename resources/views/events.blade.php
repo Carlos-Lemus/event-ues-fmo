@@ -2,7 +2,7 @@
 
 <div id="body">
     @include('include.manager.menu');
-    <div class="container-fluid container-manager pl-5 pr-5 mb-5">
+    <div class="container-fluid container-main pl-5 pr-5 mb-5 max-width-lg">
 
         @if (session('msgSuccess'))
         <div class="row alert alert-success">
@@ -48,40 +48,43 @@
         </div>
 
         <form class="row row-form" enctype="multipart/form-data">
-            <div class="col-4">
-                <button data-toggle="modal" type="button" class="btn btn-danger text-white" data-target="#modalCreate">Agregar Evento
+            <div class="col-md-4 col-sm-12 mb-3">
+                <button data-toggle="modal" type="button" class="btn btn-danger text-white d-block" data-target="#modalCreate">Agregar Evento
                 </button>
             </div>
 
-            <table class="table mt-4 shadow-lg">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Nombre del evento</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($events as $event)
-                    <tr>
-                        <td scope="row">{{$event->title}}</td>
-                        <td>{{$event->description}}</td>
-                        <td>{{$event->date}}</td>
-                        <td>{{$event->hour}}</td>
-                        <td>
-                            <a data-event="{{$event}}" href="#" class="btn-edit-event" data-toggle="modal" data-target="#modalEdit">
-                                <i class="fas fa-edit text-warning"></i>
-                            </a>
-                            <a href="{{ url('/events/'.$event->id.'/delete') }}">
-                                <i class="fas fa-trash text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="col-md-12 mt-4 mx-auto col-table shadow-sm">
+                <table class="table table-striped rounded">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($events as $event)
+                        <tr>
+                            <td scope="row">{{$event->title}}</td>
+                            <td>{{$event->description}}</td>
+                            <td>{{$event->date}}</td>
+                            <td>{{$event->hour}}</td>
+                            <td>
+                                <a data-event="{{$event}}" href="#" class="btn-edit-event" data-toggle="modal" data-target="#modalEdit">
+                                    <i class="fas fa-edit text-warning"></i>
+                                </a>
+                                <a href="{{ url('/events/'.$event->id.'/delete') }}">
+                                    <i class="fas fa-trash text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
 
         </form>
 

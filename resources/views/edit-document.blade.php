@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<div class="container-fluid mx-auto">
+<div class="container-fluid pl-0 pr-0">
 
     <header class="header-doc">
         <navbar class="navbar-doc">
