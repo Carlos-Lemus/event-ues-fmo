@@ -20,13 +20,28 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ingresa un Evento</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ingresar un Evento</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         @include('include.forms.form-add-event');
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalDate" tabindex="-1" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Fechas del evento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @include('include.forms.form-add-date');
                     </div>
                 </div>
             </div>
@@ -49,7 +64,12 @@
 
         <form class="row row-form" enctype="multipart/form-data">
             <div class="col-md-4 col-sm-12 mb-3">
-                <button data-toggle="modal" type="button" class="btn btn-danger text-white d-block" data-target="#modalCreate">Agregar Evento
+                <button data-toggle="modal" type="button" class="btn btn-secondary text-white d-block" data-target="#modalCreate">Agregar Evento
+                </button>
+            </div>
+
+            <div class="col-md-4 col-sm-12 mb-3">
+                <button data-toggle="modal" type="button" class="btn btn-info text-white d-block ml-auto" data-target="#modalDate">Mostrar Fechas
                 </button>
             </div>
 
@@ -66,16 +86,21 @@
                     </thead>
                     <tbody>
                         @foreach($events as $event)
+                        <?php
+                        $url = '/events/' . $event->id . '/delete';
+                        $id = 'modal-delete-' . $event->id;
+                        ?>
+                        @include('include.modals.modal-delete')
                         <tr>
                             <td scope="row">{{$event->title}}</td>
                             <td>{{$event->description}}</td>
-                            <td>{{$event->date}}</td>
+                            <td>{{$event->date->date}}</td>
                             <td>{{$event->hour}}</td>
                             <td>
                                 <a data-event="{{$event}}" href="#" class="btn-edit-event" data-toggle="modal" data-target="#modalEdit">
                                     <i class="fas fa-edit text-warning"></i>
                                 </a>
-                                <a href="{{ url('/events/'.$event->id.'/delete') }}">
+                                <a data-id="{{$event->id}}" href="#" class="btn-delete-record">
                                     <i class="fas fa-trash text-danger"></i>
                                 </a>
                             </td>

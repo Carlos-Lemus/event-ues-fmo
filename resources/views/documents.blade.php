@@ -22,7 +22,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Agregar Documento</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -36,7 +36,7 @@
 
         <form class="row row-form" enctype="multipart/form-data">
             <div class="col-md-4 col-sm-12 mb-3">
-                <button id="btn-upload" type="button" class="btn btn-danger text-white d-block" data-toggle="modal" data-target="#staticBackdrop">Agregar Documento</button>
+                <button id="btn-upload" type="button" class="btn btn-secondary text-white d-block" data-toggle="modal" data-target="#staticBackdrop">Agregar Documento</button>
             </div>
 
             <div class="col-md-4 col-sm-12 mb-3">
@@ -52,7 +52,13 @@
 
         <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 mt-4">
             @foreach($docs as $doc)
+
+            <?php
+            $url = '/documents/' . $doc->id . '/delete';
+            $id = 'modal-delete-' . $doc->id;
+            ?>
             <div class="col mb-4">
+                @include('include.modals.modal-delete')
                 <div data-id="{{$doc->id}}" class="card card-doc h-100 mx-auto">
 
                     <!-- Start Toast -->
@@ -64,9 +70,11 @@
                             </button>
                         </div>
                         <div class="toast-body">
-                            <a href="#" class="mb-2">Ver detalles</a>
+                            <a target="_blankx" href="{{$doc->file}}" class="mb-2">Ver detalles</a>
                             <a href="{{ url('/showDocument/'.$doc->id) }}" class="btn btn-warning rounded"><i class="fas fa-edit text-white"></i></a>
-                            <a href="{{ url('/documents/'.$doc->id.'/delete') }}" class="btn btn-danger rounded"><i class="fas fa-trash text-white"></i></a>
+                            <a data-id="{{$doc->id}}" href="#" class="btn btn-danger btn-delete-record">
+                                <i class="fas fa-trash text-white"></i>
+                            </a>
                         </div>
                     </div>
 

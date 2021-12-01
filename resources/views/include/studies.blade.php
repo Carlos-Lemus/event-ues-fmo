@@ -19,10 +19,10 @@
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                         <div class="course-image">
-                            <a href="javascript:void(0)"><img src="{{$doc->image}}" alt="#"></a>
+                            <a target="_blankx" href="{{$doc->file}}"><img src="{{$doc->image}}" alt="#"></a>
                         </div>
                         <div class="content">
-                            <h3><a href="javascript:void(0)">{{$doc->title}}</a></h3>
+                            <h3><a target="_blankx" href="{{$doc->file}}">{{$doc->title}}</a></h3>
                             <p>{{$doc->description}}</p>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ Author: GrayGrids
 */
 $(document).ready(function () {
     //===== Prealoder
-
+    
     window.onload = function () {
         window.setTimeout(fadeout, 500);
     }
@@ -102,54 +102,41 @@ $(document).ready(function () {
     //     seconds.innerHTML = s < 10 ? '0' + s : s;
     // }, 1000);
 
-    const martes = document.querySelector('#day-martes');
-    const miercoles = document.querySelector('#day-miercoles');
-    const jueves = document.querySelector('#day-jueves');
-    const viernes = document.querySelector('#day-viernes');
+    const daysEvent = document.querySelectorAll('.day-event');
+    const divEventsDay = $('.info-evento');
 
-    const divMartes = $('#martes');
-    const divMiercoles = $('#miercoles');
-    const divJueves = $('#jueves');
-    const divViernes = $('#viernes');
-    
-    changeDay(divMartes);
+    if (daysEvent) {
 
-    martes.addEventListener('click', (event) => {
-        event.preventDefault();
+        changeDay($('#' + divEventsDay[0].id));
 
-        changeDay(divMartes);
-    })
-    miercoles.addEventListener('click', (event) => {
-        event.preventDefault();
+        daysEvent.forEach(dayEvent => {
+            dayEvent.addEventListener('click', (event) => {
+                event.preventDefault();
 
-        changeDay(divMiercoles);
-    })
-    jueves.addEventListener('click', (event) => {
-        event.preventDefault();
+                const div = $('#'+dayEvent.dataset.day);
 
-        changeDay(divJueves);
-    })
-    viernes.addEventListener('click', (event) => {
-        event.preventDefault();
+                changeDay(div);
+            });
+        });
+    }
 
-        changeDay(divViernes);
-    })
 
     function changeDay(divCurrent) {
 
-        divMartes.css("display", "none");
-        divMiercoles.css("display", "none");
-        divJueves.css("display", "none");
-        divViernes.css("display", "none");
-        
+        for(let i = 0; i < divEventsDay.length; i++) {
+            const div = $('#' + divEventsDay[i].id);
+            div.css("display", "none");
+        };
+
         divCurrent.fadeIn();
         divCurrent.css("display", "block");
     }
 
-    const toastError =  $('.toast-error');
+    const toastError = $('.toast-error');
 
-    if(toastError) {
+    if (toastError) {
         toastError.toast('show');
     }
-    
+
+    clear();
 });

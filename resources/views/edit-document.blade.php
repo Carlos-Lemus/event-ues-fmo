@@ -4,13 +4,13 @@
 
     <header class="header-doc">
         <navbar class="navbar-doc">
-            <a href="/documents" class="btn btn-primary text-white ml-4">
+            <a href="/documents" class="btn btn-dark text-white ml-4">
                 <i class="fas fa-arrow-left"></i>
                 Regresar
             </a>
 
             <div>
-                <button type="button" class="btn btn-warning btn-edit-document rounded text-white mr-4">Editar</button>
+                <button type="button" class="btn btn-secondary btn-edit-document rounded text-white mr-4">Editar</button>
             </div>
         </navbar>
     </header>

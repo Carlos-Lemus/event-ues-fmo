@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DateController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventController;
+use App\Models\Date;
 use App\Models\Document;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
@@ -22,12 +24,15 @@ Route::get('/', function () {
 
     try {
         $events = Event::orderBy('hour')->get()->groupBy(function ($data) {
-            return $data->date;
+            return $data->date->date;
         });
+
+        $dates = Date::all()->sortBy('date');
 
         $docs = Document::orderBy('id', 'DESC')->skip(0)->take(6)->get();
 
-        return view('home', compact(['docs', 'events']));
+        return view('home', compact(['docs', 'events', 'dates']));
+
     } catch (Exception $ex) {
 
         $events = array();
@@ -53,6 +58,10 @@ Route::get('/showDocument/{id}', [DocumentController::class, 'showDocument'])->m
 Route::post('/upload-doc', [DocumentController::class, 'insert']);
 Route::post('/documents/{id}/update', [DocumentController::class, 'update']);
 Route::get('/documents/{id}/delete', [DocumentController::class, 'delete']);
+
+// Routes Events
+Route::post('/new-date', [DateController::class, 'insert']);
+Route::get('/dates/{id}/delete', [DateController::class, 'delete']);
 
 // Routes Events
 Route::get('/events', [EventController::class, 'index'])->middleware('auth');

@@ -23,8 +23,8 @@
     </div>
 
     <div class="modal-footer mt-3">
-        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Cancelar</button>
-        <button type="button" id="btn-modal" class="btn btn-primary btn-submit">Guardar</button>
+        <button type="button" class="btn btn-danger text-white" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btn-modal" class="btn btn-secondary btn-submit">Guardar</button>
     </div>
 
 

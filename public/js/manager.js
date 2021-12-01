@@ -61,17 +61,15 @@ $(document).ready(function () {
         const link = document.querySelector('#edit-link');
         const date = document.querySelector('#edit-date');
         const hour = document.querySelector('#edit-hour');
-
         btnsEventEdit.forEach(btn => {
             btn.addEventListener('click', (event) => {
                 event.preventDefault();
-
                 const eventCurrent = JSON.parse(btn.dataset.event);
 
                 title.value = eventCurrent.title;
                 description.value = eventCurrent.description;
                 link.value = eventCurrent.link;
-                date.value = eventCurrent.date;
+                date.value = eventCurrent.date.id;
                 hour.value = eventCurrent.hour;
 
                 formEventEdit.action = `/events/${eventCurrent.id}/update`;;
@@ -126,14 +124,14 @@ $(document).ready(function () {
     function isValidFormData(form) {
         let isValidForm = true;
         const inputs = form.elements;
-
+        
         for (let i = 0; i < inputs.length; i++) {
-
-            if ((inputs[i].nodeName === "INPUT" || inputs[i].nodeName === "TEXTAREA") && inputs[i].name != '_token' && inputs[i].name != 'image') {
+            
+            if ((inputs[i].nodeName === "INPUT" || inputs[i].nodeName === "TEXTAREA" || inputs[i].nodeName === "SELECT") && inputs[i].name != '_token' && inputs[i].name != 'image') {
 
                 inputs[i].classList.remove('is-invalid');
 
-                if (inputs[i].value === '') {
+                if (inputs[i].value === '' || (inputs[i].value === '-1' && inputs[i].nodeName === "SELECT")) {
                     const alert = form.querySelector('.alert');
 
                     alert.classList.remove('hidden');
@@ -148,5 +146,21 @@ $(document).ready(function () {
 
         return isValidForm;
     }
+
+    const btnsDeleteRecord = document.querySelectorAll('.btn-delete-record');
+
+    if(btnsDeleteRecord) {
+        btnsDeleteRecord.forEach(btn => {
+            btn.addEventListener('click', event => {
+                event.preventDefault();
+
+                const id = btn.dataset.id;
+
+                const modalDelete = $('#modal-delete-'+id);
+                modalDelete.modal('show');
+            });
+        })
+    }
+
 
 });

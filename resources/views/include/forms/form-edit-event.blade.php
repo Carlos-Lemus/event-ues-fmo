@@ -2,8 +2,8 @@
     @csrf
 
     <div class="form-group">
-        <label for="recipient-name" class="col-form-label" >Titulo:</label>
-        <input  id="edit-title" name="title" id="title" type="text" class="form-control" id="txt-title">
+        <label for="recipient-name" class="col-form-label">Titulo:</label>
+        <input id="edit-title" name="title" id="title" type="text" class="form-control" id="txt-title">
     </div>
     <div class="form-group">
         <label for="message-text" class="col-form-label">Descripcion:</label>
@@ -16,10 +16,12 @@
     </div>
 
     <div class="form-group">
-        <div class="form-group">
-            <label>Fecha del evento</label>
-            <input required type="date" id="edit-date" name="date" class="form-control">
-        </div>
+        <select id="edit-date" name="date" class="form-control" aria-label="Fechas">
+            <option value="-1" selected>Selecciona una fecha</option>
+            @foreach($dates as $date)
+            <option value="{{$date->id}}">{{$date->date}}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="form-group">
@@ -34,7 +36,7 @@
     </div>
 
     <div class="modal-footer mt-3">
-        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Close</button>
-        <button type="button" id="btn-modal" class="btn btn-primary btn-submit">Actualizar</button>
+        <button type="button" class="btn btn-danger text-white" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btn-modal" class="btn btn-secondary btn-submit">Actualizar</button>
     </div>
 </form>

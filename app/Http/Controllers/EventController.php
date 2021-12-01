@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Date;
 use App\Models\Event;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,9 +15,11 @@ class EventController extends Controller
     {
         try {
 
-            $events = Event::all()->sortBy('date');
+            $events = Event::all()->sortBy('hour');
+
+            $dates = Date::all()->sortBy('date');
     
-            return view('events', compact('events'));
+            return view('events', compact('events', 'dates'));
 
         } catch (Exception $ex) {
             return redirect('/')->back();
@@ -31,7 +34,7 @@ class EventController extends Controller
             $data->title = $request->title;
             $data->description = $request->description;
             $data->link = $request->link;
-            $data->date = $request->date;
+            $data->idDate = $request->date;
             $data->hour = $request->hour;
 
             $data->save();
@@ -50,7 +53,7 @@ class EventController extends Controller
             $data->title = $request->title;
             $data->description = $request->description;
             $data->link = $request->link;
-            $data->date = $request->date;
+            $data->idDate = $request->date;
             $data->hour = $request->hour;
 
             $data->update();
